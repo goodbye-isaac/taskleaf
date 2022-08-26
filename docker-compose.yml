@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: postgres:10.5
+    volumes:
+      - rails5_postgre:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "3306:3306"
+  app:
+    build: .
+    command: bash -c "rm -f tmp/pids/sever.pid && bundle exec rails s -p 80 -b '0.0.0.0'"
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    tty: true
+volumes:
+  rails5_postgre:
+    external: true
