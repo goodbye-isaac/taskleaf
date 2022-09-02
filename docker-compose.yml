@@ -19,6 +19,7 @@ services:
     depends_on:
       - db
     tty: true
+    #user: "1000:1000"
 volumes:
   rails5_postgre:
     external: true
