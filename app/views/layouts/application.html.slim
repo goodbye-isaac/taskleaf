@@ -22,7 +22,7 @@ html
             - else 
               li.nav-item = link_to 'ログイン', login_path, class: 'nav-link'
         
-    .container.mt-3
+    .container.mt-3 
       - if flash.notice.present?
         .alert.alert-success= flash.notice
       = yield

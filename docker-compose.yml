@@ -18,8 +18,13 @@ services:
       - .:/app
     depends_on:
       - db
+      - chrome
     tty: true
     #user: "1000:1000"
+  chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
 volumes:
   rails5_postgre:
     external: true
